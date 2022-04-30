@@ -1,9 +1,8 @@
-// Creating mult variables 
+// Packages needed for this application
 const inquirer = require('inquirer');
-const generateMarkdown = require('../utils/generateMarkdown.js');
+const generateMarkdown = require('./utils/generateMarkdown.js');
 const fs = require('fs');
-
-//Creating survey of questions 
+// Array of questions for user input
 const questions = [
     {
         type: 'input',
@@ -21,12 +20,12 @@ const questions = [
     {
         type: 'input',
         name: 'githubUsername',
-        message: 'What is your GitHub username? (Required)',
+        message: 'What is your GitHub Username? (Required)',
         validate: githubInput => {
             if (githubInput) {
                 return true;
             } else {
-                console.log('Please enter your Github username!');
+                console.log('Please enter your GitHub username!');
                 return false;
             }
         }
@@ -34,19 +33,20 @@ const questions = [
     {
         type: 'input',
         name: 'email',
-        message: 'What is your email address? (Required) ',
+        message: 'What is your email address? (Required)',
         validate: githubInput => {
             if (githubInput) {
                 return true;
             } else {
                 console.log('Please enter your email address!');
+                return false;
             }
         }
     },
     {
         type: 'input',
         name: 'what',
-        message: 'What is your porject and what problem problem will it solve? (Required)',
+        message: 'What is your project and what problem will it solve? (Required)',
         validate: whatInput => {
             if (whatInput) {
                 return true;
@@ -56,7 +56,7 @@ const questions = [
             }
         }
     },
-    {   
+    {
         type: 'input',
         name: 'why',
         message: 'Why did you create this project? (Required)',
@@ -65,6 +65,7 @@ const questions = [
                 return true;
             } else {
                 console.log('Please enter why you created this project!');
+                return false;
             }
         }
     },
@@ -86,23 +87,23 @@ const questions = [
         name: 'installation',
         message: 'Please provide step-by-step installation instructions for your project. (Required)',
         validate: installInput => {
-            if (usageInput) {
+            if (installInput) {
                 return true;
             } else {
-                console.log('Please enter your use instructions!');
-                return false; 
+                console.log('Please enter your installation instructions!');
+                return false;
             }
         }
     },
     {
         type: 'input',
         name: 'usage',
-        message: 'Please provide instructions and examples for use (Required)',
+        message: 'Please provide instructions and examples for use. (Required)',
         validate: usageInput => {
             if (usageInput) {
                 return true;
             } else {
-                console.log ('Please enter your use instructions!');
+                console.log('Please enter your use instructions!');
                 return false;
             }
         }
@@ -115,15 +116,15 @@ const questions = [
     },
     {
         type: 'confirm',
-        name: 'confirmcontributers',
+        name: 'confirmContributers',
         message: 'Would you like to allow other developers to contribute?',
         default: true
     },
     {
         type: 'input',
         name: 'contribute',
-        message: 'Would you like to allow other developers to contribute?',
-        when: ({ confirmContributers}) => {
+        message: 'Please provide guidelines for contributing. (Required)',
+        when: ({ confirmContributers }) => {
             if (confirmContributers) {
                 return true;
             } else {
@@ -135,41 +136,43 @@ const questions = [
                 return true;
             } else {
                 console.log('Please enter contributer guidelines!');
+                return false;
             }
         }
     },
     {
         type: 'input',
         name: 'test',
-        message: 'Please provide instruction on how to test the app. (Required)',
+        message: 'Please provide instructions on how to test the app. (Required)',
         validate: testInput => {
             if (testInput) {
                 return true;
             } else {
                 console.log('Please enter your use test instructions!');
-                return false; 
+                return false;
             }
         }
     }
 ];
 
-// function to write README file 
+// function to write README file
 const writeFile = fileContent => {
     return new Promise((resolve, reject) => {
-        fs.writeFile("./dist/generated-README.md", fileContent, err => {
+        fs.writeFile('./dist/generated-README.md', fileContent, err => {
             if (err) {
                 reject(err);
                 return;
             }
+
             resolve({
-                ok:true, 
+                ok: true,
                 message: 'File created!'
             });
         });
     });
 };
 
-//function to prompt questions and store user inputs
+// function to prompt questions and store user inputs
 const init = () => {
 
     return inquirer.prompt(questions)
@@ -178,8 +181,8 @@ const init = () => {
     })
 }
 
-// Function call to intialize app
-init ()
+// Function call to initialize app
+init()
 .then(readmeData => {
     console.log(readmeData);
     return generateMarkdown(readmeData);
@@ -194,5 +197,3 @@ init ()
     console.log(err);
 })
 
-
-module.exports = index;

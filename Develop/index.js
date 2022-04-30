@@ -1,6 +1,6 @@
 // Creating mult variables 
 const inquirer = require('inquirer');
-const generateMarkdown = require('./utils/generateMarkdown.js');
+const generateMarkdown = require('../utils/generateMarkdown.js');
 const fs = require('fs');
 
 //Creating survey of questions 
@@ -193,3 +193,6 @@ init ()
 .catch(err => {
     console.log(err);
 })
+
+
+module.exports = index;

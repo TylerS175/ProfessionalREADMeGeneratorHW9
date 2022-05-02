@@ -1,5 +1,5 @@
 
-  # Tyler Shifflett
+  # Readme File
   
   
   ![badge](https://img.shields.io/badge/license-agpl-blue)
@@ -16,13 +16,13 @@
   * [Questions](#questions)
   
   ## [Description](#table-of-contents)
-  t
-  f
-  g
+  Run Buddy
+  Tyler Shifflett
+  Use this for fitness and personal training purposes 
   ## [Installation](#table-of-contents)
-  d
+  HTML, CSS
   ## [Usage](#table-of-contents)
-  c
+  Gather pictures, employer information, create Wireframe
   
   For more information on how to add screenshots for examples, visit the following website:
   
@@ -41,7 +41,7 @@
   Thank you for your interest in helping out; however, I will not be accepting contributions from third parties.
     
   ## [Tests](#table-of-contents)
-  n
+  Google Chrome
   ## [Questions](#table-of-contents)
   Please contact me using the following links:
   [GitHub](https://github.com/TylerS175)

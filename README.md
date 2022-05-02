@@ -8,4 +8,6 @@ Using the Node index.js in the terminal box you will answer a series of question
 
 See screenshot of an example for ReadMe File: 
 
-![screenshot](./)
+![screenshot](./images/Readme1sthalf.png)
+
+![screenshot](./images/Readme2ndhalf.png)
